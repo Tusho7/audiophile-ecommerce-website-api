@@ -1,0 +1,23 @@
+openapi: 3.0.0
+info:
+  title: Audiophile-Ecommerce
+  description: Audiophile Ecommerce API
+  version: 0.1.9
+
+servers:
+  - url: http://localhost:3000/api
+    description: local server
+paths:
+  /products:
+    get:
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Successfully fetched
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
