@@ -13,4 +13,4 @@ app.use(bodyParser.json());
 app.use("/api", productRouter);
 app.use("/", ...swaggerMiddleware());
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
