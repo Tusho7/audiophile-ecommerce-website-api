@@ -1,4 +1,5 @@
 import mongoose, { mongo } from "mongoose";
+mongoose.set("strictQuery", false);
 
 const { Schema } = mongoose;
 
