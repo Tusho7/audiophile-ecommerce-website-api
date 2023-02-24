@@ -1,5 +1,9 @@
 import express from "express";
-import { loginUser, signup } from "../controllers/user-controller.js";
+import {
+  authenticate,
+  loginUser,
+  signup,
+} from "../controllers/user-controller.js";
 import multer from "multer";
 
 const userRouter = express.Router();
@@ -32,5 +36,10 @@ userRouter.post(
 );
 
 userRouter.post("/user/login", loginUser);
+
+userRouter.get("/user", authenticate, async (req, res) => {
+  const foundUser = await User.findById(req.user._id).select("-password");
+  res.send(foundUser);
+});
 
 export default userRouter;

@@ -64,3 +64,32 @@ paths:
       responses:
         "200":
           description: login successfully
+  /user:
+    get:
+      summary: Authenticate user
+      description: Authenticate a user by verifying their JWT token
+      tags:
+        - User
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    description: The user's email
+                  avatar:
+                    type: string
+                    description: URL of the user's avatar image
+        "401":
+          description: Access denied. No token provided.
+      security:
+        - BearerAuth: []
+    securitySchemes:
+      BearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
