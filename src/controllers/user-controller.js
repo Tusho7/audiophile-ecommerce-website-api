@@ -10,6 +10,11 @@ export const signup = async (req, res) => {
     return res.status(400).json({ error: "Enter all required fields" });
   }
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ error: "Invalid email format" });
+  }
+
   const exist = await User.findOne({ email });
   if (exist) {
     return res
