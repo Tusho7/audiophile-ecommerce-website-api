@@ -93,3 +93,54 @@ paths:
         type: http
         scheme: bearer
         bearerFormat: JWT
+  /cart:
+    post:
+      tags:
+        - cart
+      requestBody:
+        description: add cart details
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                name:
+                  type: string
+                number:
+                  type: number
+                price:
+                  type: string
+                image:
+                  type: string
+                userId:
+                  type: string
+      responses:
+        "200":
+          description: Cart detail added successfully
+  /carts:
+    get:
+      tags:
+        - Carts
+      responses:
+        "200":
+          description: get all cart info successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /carts/{id}:
+    delete:
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      tags:
+        - Carts
+      responses:
+        "200":
+          description: cart deleted
