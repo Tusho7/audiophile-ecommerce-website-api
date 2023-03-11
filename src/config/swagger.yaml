@@ -9,7 +9,7 @@ servers:
     description: local server
   - url: https://audiophile-ecommerce-tunt.onrender.com/api
     description: render server
-  - url: https://curious-pear-anemone.cyclic.app
+  - url: https://curious-pear-anemone.cyclic.app/api
     description: cyclic server
 paths:
   /products:
