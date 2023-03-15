@@ -27,6 +27,11 @@ export const getCart = async (req, res) => {
 };
 
 export const deleteCarts = async (req, res) => {
-  await CartItem.deleteMany({ userId: req.params.id });
-  res.status(200).json("Cart deleted");
+  try {
+    const userId = req.params.userId;
+    await CartItem.deleteMany({ userId });
+    res.status(200).json("Cart deleted");
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
