@@ -20,7 +20,7 @@ const cartItemSchema = new Schema({
     required: true,
   },
   userId: {
-    type: Schema.Types.ObjectId,
+    type: String,
     required: true,
   },
 });
