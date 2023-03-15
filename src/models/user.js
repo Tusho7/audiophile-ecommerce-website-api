@@ -3,7 +3,7 @@ mongoose.set("strictQuery", false);
 
 const { Schema } = mongoose;
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   email: {
     type: String,
     required: true,
