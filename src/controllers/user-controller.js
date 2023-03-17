@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export const signup = async (req, res) => {
-  const { email, password, userId } = req.body;
+  const { email, password } = req.body;
   const { file } = req;
 
   if (!email || !password) {
@@ -22,15 +22,12 @@ export const signup = async (req, res) => {
       .json({ error: "An account with this email already exists" });
   }
 
-  // const id = crypto.randomBytes(16).toString("hex");
-
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const newUser = new User({
     email,
     password: hashedPassword,
     avatar: "images/" + file.originalname,
-    id: userId,
   });
 
   const saveUser = await newUser.save();

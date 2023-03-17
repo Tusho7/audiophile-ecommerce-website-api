@@ -135,14 +135,12 @@ paths:
                   type: string
   /carts/{id}:
     delete:
+      summary: "Delete a cart by ID"
       parameters:
-        - in: path
-          name: id
-          schema:
-            type: string
+        - name: "id"
+          in: "path"
+          type: "string"
           required: true
-      tags:
-        - Carts
       responses:
-        "200":
-          description: cart deleted
+        200:
+          description: "OK"
