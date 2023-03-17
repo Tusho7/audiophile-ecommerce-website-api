@@ -22,12 +22,15 @@ export const signup = async (req, res) => {
       .json({ error: "An account with this email already exists" });
   }
 
+  const id = crypto.randomBytes(16).toString("hex");
+
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const newUser = new User({
     email,
     password: hashedPassword,
     avatar: "images/" + file.originalname,
+    id,
   });
 
   const saveUser = await newUser.save();
