@@ -28,6 +28,12 @@ export const getCart = async (req, res) => {
 
 export const deleteCarts = async (req, res) => {
   const userId = req.user._id;
+  const token = req.header("Authorization").replace("Bearer ", "");
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  if (decoded.id !== userId) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
   const result = await CartItem.deleteMany({ userId });
   console.log(result);
   res.status(200).json("Cart deleted");
