@@ -5,6 +5,6 @@ const cartRouter = express.Router();
 
 cartRouter.post("/cart", postCart);
 cartRouter.get("/carts", getCart);
-cartRouter.delete("/carts/:id", deleteCarts);
+cartRouter.delete("/deleteCarts", deleteCarts);
 
 export default cartRouter;
