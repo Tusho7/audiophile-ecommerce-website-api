@@ -27,6 +27,7 @@ export const getCart = async (req, res) => {
 };
 
 export const deleteCarts = async (req, res) => {
-  const result = await CartItem.deleteMany({ userId: req.params.id });
+  const userId = String(req.params.id);
+  const result = await CartItem.deleteMany({ userId });
   res.status(200).json(result);
 };

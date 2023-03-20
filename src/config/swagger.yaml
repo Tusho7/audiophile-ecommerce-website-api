@@ -133,7 +133,7 @@ paths:
                 type: array
                 items:
                   type: string
-  /deleteCarts:
+  /deleteCarts/{id}:
     delete:
       summary: Delete all cart items for the authenticated user
       security:
