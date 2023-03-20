@@ -135,16 +135,8 @@ paths:
                   type: string
   /deleteCarts/{id}:
     delete:
-      summary: Delete all cart items for the authenticated user
-      security:
-        - bearerAuth: []
+      tags:
+        - Carts
       responses:
         "200":
-          description: Cart items successfully deleted
-        "401":
-          description: Unauthorized
-      securitySchemes:
-        bearerAuth:
-          type: http
-          scheme: bearer
-          bearerFormat: JWT
+          description: cart deleted
