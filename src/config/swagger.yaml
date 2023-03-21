@@ -68,10 +68,12 @@ paths:
           description: login successfully
   /user:
     get:
-      summary: Authenticate user
-      description: Authenticate a user by verifying their JWT token
+      summary: Get user information
+      description: Get information about the authenticated user
       tags:
         - User
+      security:
+        - bearerAuth: []
       responses:
         "200":
           description: Successful response
@@ -80,21 +82,22 @@ paths:
               schema:
                 type: object
                 properties:
-                  email:
+                  id:
                     type: string
-                    description: The user's email
-                  avatar:
+                    description: The user's ID
+                  name:
                     type: string
-                    description: URL of the user's avatar image
+                    description: The user's name
         "401":
-          description: Access denied. No token provided.
-      security:
-        - BearerAuth: []
-    securitySchemes:
-      BearerAuth:
-        type: http
-        scheme: bearer
-        bearerFormat: JWT
+          description: Unauthorized
+    security:
+      - bearerAuth: []
+    components:
+      securitySchemes:
+        bearerAuth:
+          type: http
+          scheme: bearer
+          bearerFormat: JWT
   /cart:
     post:
       tags:
