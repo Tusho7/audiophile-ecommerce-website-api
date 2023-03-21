@@ -55,7 +55,7 @@ export const loginUser = async (req, res) => {
   } else {
     const token = jwt.sign(
       {
-        id: existingUser._id,
+        id: existingUser.id,
         email: existingUser.email,
         avatar: existingUser.avatar,
       },
