@@ -20,7 +20,7 @@ export const postCart = async (req, res) => {
 };
 
 export const getCart = async (req, res) => {
-  const userId = String(req.params.id);
+  const userId = String(req.params.userId);
   const allCarts = await CartItem.find({ userId });
   res.status(200).json(allCarts);
 };
