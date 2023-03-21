@@ -28,14 +28,7 @@ export const getCart = async (req, res) => {
 };
 
 export const deleteCarts = async (req, res) => {
-  try {
-    const userId = String(req.user._id);
-    console.log("userId:", userId);
-    const result = await CartItem.deleteMany({ userId });
-    console.log("result:", result);
-    res.status(200).json({ message: "Cart items successfully deleted" });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Failed to delete cart items" });
-  }
+  const userId = String(req.params.userId);
+  const result = await CartItem.deleteMany({ userId });
+  res.status(200).json({ message: "Cart items successfully deleted" });
 };

@@ -143,10 +143,17 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/CartItem"
-  /deleteCarts/{id}:
+  /deleteCarts/{userId}:
     delete:
       tags:
         - Carts
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+          description: The ID of the user whose carts should be deleted.
       responses:
         "200":
-          description: cart deleted
+          description: Carts deleted successfully.
