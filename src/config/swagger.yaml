@@ -120,19 +120,26 @@ paths:
       responses:
         "200":
           description: Cart detail added successfully
-  /carts:
+  /carts/{userId}:
     get:
       tags:
         - Carts
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: ID of the user's cart to retrieve
+          schema:
+            type: string
       responses:
         "200":
-          description: get all cart info successfully
+          description: get the user's cart info successfully
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  type: string
+                  $ref: "#/components/schemas/CartItem"
   /deleteCarts/{id}:
     delete:
       tags:
