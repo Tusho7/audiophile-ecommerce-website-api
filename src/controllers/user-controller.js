@@ -1,6 +1,7 @@
 import User from "../models/user.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { v4 as uuidv4 } from "uuid";
 
 export const signup = async (req, res) => {
   const { email, password } = req.body;
@@ -28,6 +29,7 @@ export const signup = async (req, res) => {
     email,
     password: hashedPassword,
     avatar: "images/" + file.originalname,
+    id: uuidv4(),
   });
 
   const saveUser = await newUser.save();
