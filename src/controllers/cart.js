@@ -12,10 +12,12 @@ export const postCart = async (req, res) => {
       userId,
     });
     const saveCart = await newCart.save();
-    return res.status(201).json("Cart Added");
+    const updatedCart = await CartItem.find({ userId });
+    return res.status(201).json({ message: "Cart Added", cart: updatedCart });
   } else {
     await cartitem.updateOne({ $inc: { number } });
-    return res.status(200).json("Cart Updated");
+    const updatedCart = await CartItem.find({ userId });
+    return res.status(200).json({ message: "Cart Updated", cart: updatedCart });
   }
 };
 
